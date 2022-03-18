@@ -1,0 +1,54 @@
+#+STARTUP: showall
+#+EXPORT_FILE_NAME: ../README.txt
+#+OPTIONS: toc:nil author:nil
+# This is just the template README. Export to txt to get the real README.
+* NAME
+
+trivial-configuration --- A trivial configuration file reader.
+
+* VERSION
+
+#+BEGIN_SRC shell :exports results
+cat ../version
+#+END_SRC
+
+* SYNOPSIS
+
+#+begin_src lisp
+(config:read-config "/path/to/config.conf")
+*server-port* ;=> 5000
+#+end_src
+
+* DESCRIPTION
+
+Translate simple configuration ~key=value~ pairs to global variables.
+
+Example:
+
+app.conf 
+#+begin_example
+server_port=5000
+database_host=localhost
+database_port=45098
+#+end_example
+
+Read them in:
+
+#+begin_src lisp
+(config:read-confgi "app.conf")
+#+end_src
+
+Use them:
+
+#+begin_src lisp
+(start-server :port *server_port*)
+(conncet-db *database-host* *database-port*)
+#+end_src
+
+* AUTHOR
+
+Sebastian Christ ([[mailto:rudolfo.christ@pm.me]])
+
+* LICENSE
+
+Released under the MLP-2.0 license.
