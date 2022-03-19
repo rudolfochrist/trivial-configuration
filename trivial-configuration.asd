@@ -11,6 +11,7 @@
   :version (:read-file-line "version")
   :depends-on ("cl-change-case"
                "parse-number"
+               "cl-ppcre-unicode"
                (:require "uiop"))
   :components ((:file "trivial-configuration"))
   :description "A trivial configuration file reader."
