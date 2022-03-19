@@ -27,22 +27,54 @@ Example:
 
 app.conf 
 #+begin_example
-server_port=5000
-database_host=localhost
-database_port=45098
+a=b
+foo=hello
+baz="some whitespace contained"
+quux="some whitespace with \"escape\""
+num=56
+make_me_param_case=12.5
+db_user=foo
+db_pass=bar
+db_host=localhost
+db_port=5432
+db_name=names
+database_url="postgres://$db_user:$db_pass@$db_host:$db_port/$db_name"
 #+end_example
 
 Read them in:
 
 #+begin_src lisp
-(config:read-confgi "app.conf")
+CL-USER> (config:read-config "app.conf")
+; No value
 #+end_src
 
 Use them:
 
 #+begin_src lisp
-(start-server :port *server_port*)
-(conncet-db *database-host* *database-port*)
+CL-USER> *a*
+"b"
+CL-USER> *foo*
+"hello"
+CL-USER> *baz*
+"some whitespace contained"
+CL-USER> *quux*
+"some whitespace with \"escape\""
+CL-USER> *num*
+56
+CL-USER> *make-me-param-case*
+12.5
+CL-USER> *db-user*
+"foo"
+CL-USER> *db-pass*
+"bar"
+CL-USER> *db-host*
+"localhost"
+CL-USER> *db-port*
+5432
+CL-USER> *db-name*
+"names"
+CL-USER> *database-url*
+"postgres://foo:bar@localhost:5432/names"
 #+end_src
 
 * AUTHOR
